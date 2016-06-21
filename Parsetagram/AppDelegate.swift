@@ -25,13 +25,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://stark-everglades-14506.herokuapp.com/parse"
             })
     )
-        /*if PFUser.currentUser() != nil {
-            // "Main" is name of .storybord file "
+        /* let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        
+        
+        let feedTabNavigationController = storyboard.instantiateViewControllerWithIdentifier("FeedNavigationController") as! UINavigationController
+        //let feedTabViewController = feedTabNavigationController.topViewController as! FeedViewController
+        feedTabNavigationController.tabBarItem.title = "Feed"
+        //nowPlayingNavigationController.tabBarItem.image = UIImage(named: "video")
+        
+        let personalTabNavigationController = storyboard.instantiateViewControllerWithIdentifier("PersonalNavigationController") as! UINavigationController
+        //let personalTabViewController = personalTabNavigationController.topViewController as! PersonalViewController
+        personalTabNavigationController.tabBarItem.title = "Personal"
+        //topRatedNavigationController.tabBarItem.image = UIImage(named: "user")
+        
+        let postTabNavigationController = storyboard.instantiateViewControllerWithIdentifier("PostNavigationController") as! UINavigationController
+        //let postTabViewController = postTabNavigationController.topViewController as! PostViewController
+        postTabNavigationController.tabBarItem.title = "Post"
+        //popularNavigationController.tabBarItem.image = UIImage(named: "star")
+        
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [feedTabNavigationController, personalTabNavigationController, postTabNavigationController]
+        */
+        
+        
+        if PFUser.currentUser() != nil {
+            // "Main" is name of .storyboard file "
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var setViewController = storyboard.instantiateViewControllerWithIdentifier("Feed") as UIViewController
-            var rootViewController = self.window!.rootViewController
-            rootViewController?.presentViewController(setViewController, animated: false, completion: nil)        }
- */
+            let newInitVC = storyboard.instantiateViewControllerWithIdentifier("tabBar") as UIViewController
+            let navigationController = UINavigationController(rootViewController: newInitVC)
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            if let window = window {
+                window.rootViewController = navigationController
+                window.makeKeyAndVisible()
+            }
+            /*else{
+                window?.rootViewController = navigationController
+                window?.makeKeyAndVisible()
+            }*/
+        }
+ 
         return true
     }
 

@@ -1,15 +1,14 @@
 //
-//  FeedViewController.swift
+//  PersonalViewController.swift
 //  Parsetagram
 //
-//  Created by Baula Xu on 6/20/16.
+//  Created by Baula Xu on 6/21/16.
 //  Copyright © 2016 Baula Xu. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class FeedViewController: UIViewController {
+class PersonalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +21,6 @@ class FeedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onSignOut(sender: AnyObject) {
-        self.performSegueWithIdentifier("LogoutSegue", sender: nil)
-        PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
-            // PFUser.currentUser() will now be nil
-        }
-    }
 
     /*
     // MARK: - Navigation
