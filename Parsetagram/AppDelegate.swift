@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "Instagram"
+                configuration.clientKey = "uhygrufjkeru3yrhf928p7y9p82rhdub"
+                configuration.server = "https://stark-everglades-14506.herokuapp.com/parse"
+            })
+    )
+        /*if PFUser.currentUser() != nil {
+            // "Main" is name of .storybord file "
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var setViewController = storyboard.instantiateViewControllerWithIdentifier("Feed") as UIViewController
+            var rootViewController = self.window!.rootViewController
+            rootViewController?.presentViewController(setViewController, animated: false, completion: nil)        }
+ */
         return true
     }
 
