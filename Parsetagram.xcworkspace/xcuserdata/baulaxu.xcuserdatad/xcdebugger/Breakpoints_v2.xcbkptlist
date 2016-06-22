@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Parsetagram/PostViewController.swift"
-            timestampString = "488242381.246874"
+            timestampString = "488246442.719688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "onChoosePhoto(_:)"
             landmarkType = "5">
          </BreakpointContent>

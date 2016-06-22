@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var caption: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,23 +38,35 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Get the image captured by the UIImagePickerController
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        // Do something with the images (based on your use case)
-        func resize(image: UIImage, newSize: CGSize) -> UIImage {
-            let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
-            resizeImageView.contentMode = UIViewContentMode.ScaleAspectFill
-            resizeImageView.image = image
-            
-            UIGraphicsBeginImageContext(resizeImageView.frame.size)
-            resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-            let newImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return newImage
+        let editedImage = resize(originalImage, newSize: CGSizeMake(100, 100))
+        Post.postUserImage(editedImage, withCaption: caption.text) { (success: Bool, error: NSError?) -> Void in
+            if let error = error{
+            print(error)
         }
+            else {
+            print("yay!")
+        }
+        }
+        // Do something with the images (based on your use case)
         // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
+
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    @IBAction func onPost(sender: AnyObject) {
+        //segue back to newsfeed, also somehow post to newsfeed
+    }
+}
 
     /*
     // MARK: - Navigation
@@ -64,4 +78,4 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     */
 
-}
+
