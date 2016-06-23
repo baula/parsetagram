@@ -9,16 +9,27 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var post: [PFObject] = []
-    
+    var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
     
     override func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
         super.viewDidLoad()
+        
+        let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.hidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        tableView.contentInset = insets
+        
         let refreshControl = UIRefreshControl()
         // Do any additional setup after loading the view.
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -40,6 +51,27 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                
+                isMoreDataLoading = true
+                
+                let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                // Code to load more results
+                refresh()
+            }
+        }
+    }
     func refreshControlAction(refreshControl: UIRefreshControl) {
         refresh()
         // Reload the tableView now that there is new data
@@ -53,7 +85,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
-        query.limit = 20
+        query.limit = 2
         
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock {
@@ -65,6 +97,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // Do something with the found objects
                 if let posts = posts {
                     self.post = posts
+                    self.loadingMoreView!.stopAnimating()
                     self.tableView.reloadData()
                     print(posts)
                 }
@@ -74,7 +107,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-        
+        self.isMoreDataLoading = false
+    
     }
     // The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
     // immediately.  Any code that depends on the query result should be moved

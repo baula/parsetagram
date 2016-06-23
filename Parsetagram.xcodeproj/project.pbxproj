@@ -24,6 +24,8 @@
 		FF2A281E1D18993E0018DF1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A281D1D18993E0018DF1C /* LoginViewController.swift */; };
 		FF3460661D1B579700061503 /* PersonalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3460651D1B579700061503 /* PersonalCell.swift */; };
 		FF3F9C501D18B9DD00CBD58C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3F9C4F1D18B9DD00CBD58C /* FeedViewController.swift */; };
+		FF92C9E21D1C78410067FE90 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92C9E11D1C78410067FE90 /* InfiniteScrollActivityView.swift */; };
+		FF92C9E41D1C94B70067FE90 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92C9E31D1C94B70067FE90 /* DetailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		FF2A281D1D18993E0018DF1C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF3460651D1B579700061503 /* PersonalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalCell.swift; sourceTree = "<group>"; };
 		FF3F9C4F1D18B9DD00CBD58C /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		FF92C9E11D1C78410067FE90 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		FF92C9E31D1C94B70067FE90 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 				FF25A94A1D1A031C00268BFC /* Post.swift */,
 				FF25A94C1D1A11AB00268BFC /* PostCell.swift */,
 				FF3460651D1B579700061503 /* PersonalCell.swift */,
+				FF92C9E11D1C78410067FE90 /* InfiniteScrollActivityView.swift */,
+				FF92C9E31D1C94B70067FE90 /* DetailedViewController.swift */,
 			);
 			path = Parsetagram;
 			sourceTree = "<group>";
@@ -449,8 +455,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF92C9E21D1C78410067FE90 /* InfiniteScrollActivityView.swift in Sources */,
 				FF25A9491D19E90F00268BFC /* PostViewController.swift in Sources */,
 				FF2A281E1D18993E0018DF1C /* LoginViewController.swift in Sources */,
+				FF92C9E41D1C94B70067FE90 /* DetailedViewController.swift in Sources */,
 				FF3460661D1B579700061503 /* PersonalCell.swift in Sources */,
 				FF25A9471D19E8AD00268BFC /* PersonalViewController.swift in Sources */,
 				FF2A27F21D1895FB0018DF1C /* ViewController.swift in Sources */,
