@@ -22,6 +22,7 @@
 		FF2A28051D1895FB0018DF1C /* ParsetagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A28041D1895FB0018DF1C /* ParsetagramTests.swift */; };
 		FF2A28101D1895FB0018DF1C /* ParsetagramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A280F1D1895FB0018DF1C /* ParsetagramUITests.swift */; };
 		FF2A281E1D18993E0018DF1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A281D1D18993E0018DF1C /* LoginViewController.swift */; };
+		FF3460661D1B579700061503 /* PersonalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3460651D1B579700061503 /* PersonalCell.swift */; };
 		FF3F9C501D18B9DD00CBD58C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3F9C4F1D18B9DD00CBD58C /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		FF2A280F1D1895FB0018DF1C /* ParsetagramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsetagramUITests.swift; sourceTree = "<group>"; };
 		FF2A28111D1895FB0018DF1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF2A281D1D18993E0018DF1C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FF3460651D1B579700061503 /* PersonalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalCell.swift; sourceTree = "<group>"; };
 		FF3F9C4F1D18B9DD00CBD58C /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 				FF25A9481D19E90F00268BFC /* PostViewController.swift */,
 				FF25A94A1D1A031C00268BFC /* Post.swift */,
 				FF25A94C1D1A11AB00268BFC /* PostCell.swift */,
+				FF3460651D1B579700061503 /* PersonalCell.swift */,
 			);
 			path = Parsetagram;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			files = (
 				FF25A9491D19E90F00268BFC /* PostViewController.swift in Sources */,
 				FF2A281E1D18993E0018DF1C /* LoginViewController.swift in Sources */,
+				FF3460661D1B579700061503 /* PersonalCell.swift in Sources */,
 				FF25A9471D19E8AD00268BFC /* PersonalViewController.swift in Sources */,
 				FF2A27F21D1895FB0018DF1C /* ViewController.swift in Sources */,
 				FF3F9C501D18B9DD00CBD58C /* FeedViewController.swift in Sources */,

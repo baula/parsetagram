@@ -12,6 +12,7 @@ import Parse
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var caption: UITextField!
+    var postedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +40,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Get the image captured by the UIImagePickerController
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = resize(originalImage, newSize: CGSizeMake(100, 100))
-        Post.postUserImage(editedImage, withCaption: caption.text) { (success: Bool, error: NSError?) -> Void in
-            if let error = error{
-            print(error)
-        }
-            else {
-            print("yay!")
-        }
-        }
+        postedImage = editedImage
         // Do something with the images (based on your use case)
         // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)
@@ -64,7 +58,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return newImage
     }
     @IBAction func onPost(sender: AnyObject) {
-        //segue back to newsfeed, also somehow post to newsfeed
+        Post.postUserImage(postedImage, withCaption: caption.text) { (success: Bool, error: NSError?) -> Void in
+            if let error = error{
+                print(error)
+            }
+            else {
+                print("yay!")
+            }
+        }
     }
 }
 

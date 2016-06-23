@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class PostCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var imageLabel: UIImageView!
+    @IBOutlet weak var imageLabel: PFImageView!
     
 
     override func awakeFromNib() {
