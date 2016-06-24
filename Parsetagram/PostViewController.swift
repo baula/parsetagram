@@ -11,6 +11,7 @@ import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var imageThing: UIImageView!
     @IBOutlet weak var caption: UITextField!
     var postedImage: UIImage?
 
@@ -55,8 +56,11 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        //self.imageThing = newImage as UIImageView
         return newImage
     }
+    
+    
     @IBAction func onPost(sender: AnyObject) {
         Post.postUserImage(postedImage, withCaption: caption.text) { (success: Bool, error: NSError?) -> Void in
             if let error = error{

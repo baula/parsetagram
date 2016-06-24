@@ -86,7 +86,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
-        query.limit = 2
+        query.limit = 20
         
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock {
@@ -140,6 +140,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.imageLabel.file = imageFile
             cell.imageLabel.loadInBackground()
         }
+        
+        if let like = po["likesCount"] as? Int{
+        cell.likeLabel.text = "\(like)"
+        }
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.purpleColor()
+        cell.selectedBackgroundView = backgroundView
+        
         return cell
         
     }

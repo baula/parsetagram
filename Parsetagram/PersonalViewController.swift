@@ -87,9 +87,9 @@ class PersonalViewController: UIViewController, UITableViewDataSource, UITableVi
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
         
-        //query.whereKey("author", EqualTo: username.user)
+        query.whereKey("author", equalTo: PFUser.currentUser()!)
         
-        query.limit = 2
+        query.limit = 20
         
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock {
