@@ -26,6 +26,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onTakePhoto(sender: AnyObject) {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.Camera
+    
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     
     @IBAction func onChoosePhoto(sender: AnyObject) {
         let vc = UIImagePickerController()
@@ -40,7 +48,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Get the image captured by the UIImagePickerController
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = resize(originalImage, newSize: CGSizeMake(100, 100))
+        let editedImage = resize(originalImage, newSize: CGSizeMake(300, 300))
         postedImage = editedImage
         imageThing.image = postedImage
         // Do something with the images (based on your use case)

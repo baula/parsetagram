@@ -71,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="102" y="281"/>
         </scene>
-        <!--Personal-->
+        <!--Profile-->
         <scene sceneID="vWz-zd-lgA">
             <objects>
                 <viewController storyboardIdentifier="Personal" id="9a4-gg-nx9" customClass="PersonalViewController" customModule="Parsetagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,7 +134,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Personal" image="user" id="acx-63-b0B"/>
-                    <navigationItem key="navigationItem" id="M8m-Bb-Kmg"/>
+                    <navigationItem key="navigationItem" title="Profile" id="M8m-Bb-Kmg"/>
                     <connections>
                         <outlet property="tableView" destination="dUk-WN-vW9" id="qUo-28-ieJ"/>
                     </connections>
@@ -177,6 +177,14 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YZo-79-ZBq">
+                                <rect key="frame" x="110" y="218" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take a Photo"/>
+                                <connections>
+                                    <action selector="onTakePhoto:" destination="ReY-bM-ZXs" eventType="touchUpInside" id="wo7-1K-wIs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -269,7 +277,7 @@
                         <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="home" id="H77-jR-UqV"/>
-                    <navigationItem key="navigationItem" id="NIN-m4-XVC"/>
+                    <navigationItem key="navigationItem" title="Feed" id="NIN-m4-XVC"/>
                     <connections>
                         <outlet property="tableView" destination="sLn-8F-cSw" id="hfs-BQ-dWv"/>
                     </connections>
