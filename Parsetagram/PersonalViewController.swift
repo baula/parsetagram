@@ -143,6 +143,10 @@ class PersonalViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.imageLabel2.file = imageFile
             cell.imageLabel2.loadInBackground()
         }
+        
+        if let like = po["likesCount"] as? Int{
+            cell.likeLabel.text = "\(like)"
+        }
         return cell
         
     }
