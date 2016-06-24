@@ -14,7 +14,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var post: [PFObject] = []
     var isMoreDataLoading = false
-    var loadingMoreView:InfiniteScrollActivityView?
+    var loadingMoreView: InfiniteScrollActivityView?
     
     override func viewDidLoad() {
         tableView.dataSource = self
@@ -72,6 +72,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
+    
     func refreshControlAction(refreshControl: UIRefreshControl) {
         refresh()
         // Reload the tableView now that there is new data
@@ -108,7 +109,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         self.isMoreDataLoading = false
-    
+        
     }
     // The getObjectInBackgroundWithId methods are asynchronous, so any code after this will run
     // immediately.  Any code that depends on the query result should be moved
@@ -134,7 +135,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let caption = po["caption"] as? String {
             cell.captionLabel.text = caption
         }
-            //cell.imageLabel = po["media"]
+        //cell.imageLabel = po["media"]
         if let imageFile = po["media"] as? PFFile {
             cell.imageLabel.file = imageFile
             cell.imageLabel.loadInBackground()
@@ -144,15 +145,23 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let cell = sender as? UITableViewCell {
+            
+            let indexPath = tableView.indexPathForCell(cell)
+            let posts = post[indexPath!.row]
+            
+            let detailViewController = segue.destinationViewController as! DetailedViewController
+            detailViewController.post = posts
+        }
+    }
+    
     
     
 }

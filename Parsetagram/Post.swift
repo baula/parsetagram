@@ -32,6 +32,14 @@ class Post: NSObject {
             post["likesCount"] = 0
             post["commentsCount"] = 0
             
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = NSDateFormatterStyle.LongStyle
+            formatter.timeStyle = .MediumStyle
+            let date = NSDate()
+            
+            let dateString = formatter.stringFromDate(date) as String
+            post["timestamp"] = dateString
+            
             // Save object (following function will save the object in Parse asynchronously)
             post.saveInBackgroundWithBlock(completion)
         }

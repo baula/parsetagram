@@ -23,7 +23,7 @@
                                 <rect key="frame" x="31" y="152" width="258" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aph-j6-Hup">
                                 <rect key="frame" x="38" y="234" width="240" height="30"/>
@@ -182,11 +182,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PostCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="256" id="zeF-0f-Gu2" customClass="PostCell" customModule="Parsetagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PostCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="256" id="zeF-0f-Gu2" customClass="PostCell" customModule="Parsetagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="256"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zeF-0f-Gu2" id="ZEY-Xc-aZM">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="255.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="255.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9BZ-2j-PLv">
@@ -213,6 +213,7 @@
                                             <outlet property="captionLabel" destination="nW8-u3-27d" id="dbz-Gk-LgA"/>
                                             <outlet property="imageLabel" destination="LeV-Re-6kj" id="oRr-YP-ixr"/>
                                             <outlet property="usernameLabel" destination="9BZ-2j-PLv" id="Z8J-Iz-Oga"/>
+                                            <segue destination="Aq9-dc-yVC" kind="push" id="hmJ-Ng-eVu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -237,8 +238,42 @@
                     <view key="view" contentMode="scaleToFill" id="YpH-Oe-0Xo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wJm-rL-XQQ" customClass="PFImageView">
+                                <rect key="frame" x="11" y="107" width="298" height="314"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XWT-qF-pUB">
+                                <rect key="frame" x="20" y="424" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Stamp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="afR-YY-Fu1">
+                                <rect key="frame" x="88" y="75" width="212" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SeN-aU-G5N">
+                                <rect key="frame" x="11" y="75" width="138" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="WVQ-hz-Xel"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="XWT-qF-pUB" id="TE7-Ag-joH"/>
+                        <outlet property="imageLabel" destination="wJm-rL-XQQ" id="Kmc-Jp-RkT"/>
+                        <outlet property="timestampLabel" destination="afR-YY-Fu1" id="alc-Ch-asL"/>
+                        <outlet property="usernameLabel" destination="SeN-aU-G5N" id="3Da-JV-92G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1G-Ey-JVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -320,7 +355,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0vw-WS-quV"/>
-        <segue reference="WCS-WA-seL"/>
+        <segue reference="Ctg-KV-Fne"/>
+        <segue reference="woR-8u-qya"/>
     </inferredMetricsTieBreakers>
 </document>

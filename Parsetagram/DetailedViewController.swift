@@ -7,11 +7,35 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class DetailedViewController: UIViewController {
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var imageLabel: PFImageView!
+    @IBOutlet weak var captionLabel: UILabel!
+    
+    var post: PFObject!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let user = post["author"] as? PFUser {
+            self.usernameLabel.text = user.username
+        }
+        if let caption = post["caption"] as? String {
+            self.captionLabel.text = caption
+        }
+        if let imageFile = post["media"] as? PFFile {
+            self.imageLabel.file = imageFile
+            self.imageLabel.loadInBackground()
+        }
+        
+        if let date = post["timestamp"] as? String{
+            self.timestampLabel.text = date
+        }
+        
 
         // Do any additional setup after loading the view.
     }
