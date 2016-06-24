@@ -42,6 +42,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = resize(originalImage, newSize: CGSizeMake(100, 100))
         postedImage = editedImage
+        imageThing.image = postedImage
         // Do something with the images (based on your use case)
         // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)

@@ -15,6 +15,7 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var imageLabel: PFImageView!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var likeLabel: UILabel!
     
     var post: PFObject!
     
@@ -36,6 +37,10 @@ class DetailedViewController: UIViewController {
             self.timestampLabel.text = date
         }
         
+        if let likes = post["likesCount"] as? Int{
+            self.likeLabel.text = "\(likes)"
+        }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -45,6 +50,23 @@ class DetailedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onTap(sender: AnyObject) {
+        if let likes = post["likesCount"] as? Int{
+            post["likesCount"] = likes+1
+            self.likeLabel.text = "\(post["likesCount"])"
+        }
+        
+        post.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+            if let error = error{
+                print(error)
+            }
+            else {
+                print("yay!")
+            }
+        }
+)
+    
+    }
 
     /*
     // MARK: - Navigation
