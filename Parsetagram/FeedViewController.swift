@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -83,6 +84,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func refresh() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         var query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
@@ -108,6 +110,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
         self.isMoreDataLoading = false
         
     }
