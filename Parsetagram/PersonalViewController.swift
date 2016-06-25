@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class PersonalViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
@@ -83,6 +84,7 @@ class PersonalViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func refresh() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         var query = PFQuery(className: "Post")
         query.addDescendingOrder("createdAt")
         query.includeKey("author")
@@ -111,6 +113,7 @@ class PersonalViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             
         }
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
         self.isMoreDataLoading = false
         
     }
@@ -147,6 +150,11 @@ class PersonalViewController: UIViewController, UITableViewDataSource, UITableVi
         if let like = po["likesCount"] as? Int{
             cell.likeLabel.text = "\(like)"
         }
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.purpleColor()
+        cell.selectedBackgroundView = backgroundView
+
         return cell
         
     }
